@@ -1,0 +1,17 @@
+server:
+  port: 8010
+spring:
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+  datasource:
+    url: jdbc:mariadb://127.0.0.1:3306/ArtAuction_db?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul
+    username: root
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create
+custom:
+  genFileDirPath: C:\work\ArtAuction_24\src\main\resources\static

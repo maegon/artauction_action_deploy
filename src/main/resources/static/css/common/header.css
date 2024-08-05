@@ -1,0 +1,187 @@
+.header_nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 0px 300px;
+    z-index: 100;
+    transition: background-color 0.1s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.nav__logo {
+    font-size: 25px;
+    color: black;
+    text-align: center;
+}
+
+.main_logo img {
+    width: 110px;
+    height: auto;
+}
+
+.nav__main {
+    display: flex;
+    margin-left: 2%;
+}
+
+.nav__main li {
+    font-weight: bold;
+    margin: 0 10px;
+    padding: 5px 40px;
+    text-align: center;
+}
+
+.nav__main a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.nav__main a span {
+    position: relative;
+}
+
+.nav__main a span::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: black;
+    transition: width 0.3s;
+}
+
+.nav__main li:hover a span::after {
+    width: 100%;
+}
+
+.nav__login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+}
+
+.nav__login a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: black;
+}
+
+.nav__bar {
+    display: none;
+    position: absolute;
+    font-size: 25px;
+    right: 5px;
+    cursor: pointer;
+}
+
+
+#search_container {
+    text-align: left;
+    border-bottom: 1px solid black
+}
+
+#search_input {
+    display: inline-block; /* 기본적으로 숨김 */
+    transition: all 0.3s ease; /* 애니메이션 효과 */
+    width: 350px; /* 원하는 크기로 설정 */
+    opacity: 1;
+    outline: none;
+}
+
+/*프로필 부분 처리 시작*/
+#profileSection{
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+.profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#profileDropdown {
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+#profileDropdown a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+#profileDropdown a:hover {
+    background-color: #f1f1f1;
+}
+/*프로필 부분 처리 끝*/
+
+
+
+/*반응형 처리 시작*/
+@media screen and (max-width: 770px) {
+       .header_nav {
+            flex-direction: column;
+            padding: 0; /* 모바일에서는 패딩 제거 */
+        }
+
+        .nav__logo {
+            width: 80px;
+            order: 1; /* 로고를 맨 위로 */
+        }
+
+        .nav__bar {
+            display: block;
+            order: 2; /* 메뉴 버튼을 로고 아래로 */
+        }
+
+        .nav__main {
+            order: 3;
+            display: none;
+        }
+
+        .nav__login {
+            order: 4;
+            display: none;
+            margin: 0 10px;
+            padding: 5px 40px;
+        }
+
+        #search_input{
+        width: 200px;
+        }
+
+        #search_container{
+        margin-bottom: 15px;
+        }
+
+
+        .nav__main.active, .nav__login.active {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            margin: 10px;
+        }
+
+        .header_nav.active{
+         height: auto;
+        }
+
+        .nav__login a{
+         margin-left: 0px;
+        }
+}
+/*반응형 처리 끝*/
