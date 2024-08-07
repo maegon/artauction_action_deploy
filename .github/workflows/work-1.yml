@@ -122,8 +122,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/${{ env.OWNER_LC }}/ArtAuction:${{ needs.tag.outputs.tag_name }},
-            ghcr.io/${{ env.OWNER_LC }}/ArtAuction:latest
+            ghcr.io/${{ env.OWNER_LC }}/artauction_action_deploy:${{ needs.tag.outputs.tag_name }},
+            ghcr.io/${{ env.OWNER_LC }}/artauction_action_deploy:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -138,7 +138,7 @@ jobs:
         run: echo ${{ secrets.GHCR_TOKEN }} | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin
       - name: Docker pull and run
         run: |
-          docker pull ghcr.io/${{ github.actor }}/ArtAuction:latest
-          docker stop ArtAuction || true
-          docker rm ArtAuction || true
-          docker run -d -p 80:8080 --name ArtAuction --restart always ghcr.io/${{ github.actor }}/ArtAuction:latest
+          docker pull ghcr.io/${{ github.actor }}/artauction_action_deploy:latest
+          docker stop artauction_action_deploy || true
+          docker rm artauction_action_deploy || true
+          docker run -d -p 80:8080 --name artauction_action_deploy --restart always ghcr.io/${{ github.actor }}/artauction_action_deploy:latest
