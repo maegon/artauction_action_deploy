@@ -34,7 +34,7 @@ jobs:
                       clientId: ${{secrets.KAKAO_CLIENT_ID}}
                     naver:
                       client-id: ${{secrets.NAVER_CLIENT_ID}}
-                      client-secret: ${{NAVER_CLIENT_SECRET}}
+                      client-secret: ${{secrets.NAVER_CLIENT_SECRET}}
                     google:
                       client-id: ${{secrets.GOOGLE_CLIENT_ID}}
                       client-secret: ${{secrets.GOOGLE_CLIENT_SECRET}}
@@ -122,8 +122,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/${{ env.OWNER_LC }}/market-1:${{ needs.tag.outputs.tag_name }},
-            ghcr.io/${{ env.OWNER_LC }}/market-1:latest
+            ghcr.io/${{ env.OWNER_LC }}/ArtAuction:${{ needs.tag.outputs.tag_name }},
+            ghcr.io/${{ env.OWNER_LC }}/ArtAuction:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -139,6 +139,6 @@ jobs:
       - name: Docker pull and run
         run: |
           docker pull ghcr.io/${{ github.actor }}/ArtAuction:latest
-          docker stop market-1 || true
-          docker rm market-1 || true
-          docker run -d -p 80:8080 --name market-1 --restart always ghcr.io/${{ github.actor }}/market-1:latest
+          docker stop ArtAuction || true
+          docker rm ArtAuction || true
+          docker run -d -p 80:8080 --name ArtAuction --restart always ghcr.io/${{ github.actor }}/ArtAuction:latest
